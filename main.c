@@ -4,15 +4,13 @@
 
 int main()
 {
-
-    printf("Hello world!\n");
-    clearScreen();
+    clearscreen();
     menu();
     //return 0;
 }
 
 
-clearScreen()
+clearscreen()
 {
   const char* CLEAR_SCREE_ANSI = "\e[1;1H\e[2J";
   write(STDOUT_FILENO,CLEAR_SCREE_ANSI,12);
@@ -53,5 +51,80 @@ int menu ()
     }*/
 
 }
+
+bestscores()
+{
+
+}
+
+newgame()
+{
+clearscreen();
+int a = rand() % 10;
+int b = rand() % 10;
+int c = rand() % 10;
+int d = rand() % 10;
+int in1, in2, in3, in4 = 11;
+int array[2][4] = {a,b,c,d}, {va,va,vc,vd}; // a tömb első sora a 'gondolt' változók, a  második sora, hogy volt-e már beszámítva a 'vanebenne' értékbe, vagy sem.
+
+    printf("Indulhat a játék, adj meg 4 egész számot 0-9ig, majd üss entert. 10 próbálkozásod van.\n\n");
+
+
+    scanf("%d", &input);
+
+/*
+   #########################################################
+!!!! hiányzik az input változó in1 in2... re bontása és bemenet hibakezelése
+*/
+
+
+// beírt érték kiértékelése
+
+for (i=1;i<=4;i++)
+    {
+        if (in1==array[1][i]){vanebenne++;array[2][i] = 1;}
+        if (in1==array[1][i]){johelyen++;}
+    }
+for (i=1;i<=4;i++)
+    {
+        if ((in2==array[i]) && (array[2][i] != 1)){vanebenne++;array[2][i] = 1;}
+        if (in2==array[1][i]){johelyen++;}
+    }
+for (i=1;i<=4;i++)
+    {
+        if ((in3==array[i]) && (array[2][i] != 1)){vanebenne++;array[2][i] = 1;}
+        if (in3==array[1][i]){johelyen++;}
+    }
+for (i=1;i<=4;i++)
+    {
+        if ((in4==array[i]) && (array[2][i] != 1)){vanebenne++;array[2][i] = 1;}
+        if (in4==array[1][i]){johelyen++;}
+    }
+
+// /beírt érték kiértékelése
+
+vanebenne=vanebenne-johelyen;
+nincs = 4-(vanebenne+johelyen);
+
+//eredmény kiíratása
+for (j=1;j<=johelyen;j++)
+{
+    printf("O");
+}
+for (j=1;j<=vanebenne;j++)
+{
+    printf("X");
+}
+for (j=1;j<=nincs;j++)
+{
+    printf("/");
+}
+// /eredmény kiíratása
+
+
+
+
+
+
 
 
